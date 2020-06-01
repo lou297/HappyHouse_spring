@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssafy.happyhouse.dao.HouseDao">
+
+	<!-- searchAll -->
+	<select id="searchAll" resultType="HouseDeal" >
+		select * from HouseDeal
+	</select>
+	
+	<!-- search no -->
+	<select id="search"			parameterType="string"  	resultType="HouseDeal">
+		select * from HouseDeal where no = #{no}
+	</select>
+	
+	<!-- addHouseDeal -->
+	<insert id="addHouseDeal"			parameterType="HouseDeal">
+		insert into HouseDeal (	no
+						  , dong
+						  , AptName
+						  , code
+					      , dealAmount
+						  , buildYear
+						  , dealYear
+						  , dealMonth
+						  , dealDay
+						  ,	area
+						  , floor
+						  , jibun
+						  , type
+						  , rentMoney) 
+		values (#{no}
+			  , #{dong}
+			  , #{AptName}
+			  , #{code}
+			  , #{dealAmount}
+			  , #{buildYear}
+			  , #{dealYear}
+			  , #{dealMonth}
+			  , #{dealDay}
+			  ,	#{area}
+			  , #{floor}
+			  , #{jibun}
+			  , #{type}
+			  , #{rentMoney})
+	</insert>
+	
+	<!-- searchByDong -->
+	<select id="searchByDong"			parameterType="string"  	resultType="HouseDeal">
+		select * from HouseDeal where dong = #{dong}
+	</select>
+	
+	<!-- searchByBuildYear -->
+	<select id="searchByBuildYear"			parameterType="string"  	resultType="HouseDeal">
+		select * from HouseDeal where buildYear = #{buildYear}
+	</select>
+	
+	<!-- searchByDealYear -->
+	<select id="searchByDealYear"			parameterType="string"  	resultType="HouseDeal">
+		select * from HouseDeal where dealYear = #{dealYear}
+	</select>
+	
+	<!-- searchByAreaScope -->
+	<select id="searchByAreaScope"			parameterType="string"  	resultType="HouseDeal">
+		select * from HouseDeal where area = #{area}
+	</select>
+	
+	<!-- getTotalCount -->
+	<select id="getTotalCount" resultType="int" >
+		select count(*) as cnt from HouseDeal
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
