@@ -16,11 +16,11 @@
 <c:set var="root" value="${pageContext.request.contextPath }"/>
 <script type="text/javascript">
 	function findCategory(str) {
-		location.replace("${root}/tradehub.do?act=category&selected=" + str);
+		location.replace("${root}/tradehub/category?selected=" + str);
 	}
 	
 	function findDongName(str) {
-		location.replace("${root}/tradehub.do?act=dong&selected=" + str);
+		location.replace("${root}/tradehub/dong?selected=" + str);
 	}
 </script>
 

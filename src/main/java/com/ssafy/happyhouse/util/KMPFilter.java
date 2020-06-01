@@ -10,6 +10,8 @@ import com.ssafy.happyhouse.service.TradeHubServiceImpl;
 public class KMPFilter {
 	private List<TradeHub> list;
 	private TradeHubService service;
+	
+	
 	public KMPFilter() {
 		super();
 		 service = new TradeHubServiceImpl();
@@ -21,6 +23,16 @@ public class KMPFilter {
 	}
 	
 	
+	
+	
+	public KMPFilter(List<TradeHub> list) {
+		super();
+		this.list = list;
+	}
+
+
+
+
 	public List<TradeHub> getFilteredList(String dong) {
 		List<TradeHub> temp = new ArrayList<>();
 		

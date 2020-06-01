@@ -10,28 +10,58 @@
 	
 	<!-- findShopByDongName -->
 	<select id="findShopByDongName"			parameterType="string"  	resultType="TradeHub">
-		select * from trade_hub where dongName like concat('%',#{dongName},'%') limit 50
+		select	shop_name as shopName,
+				big_category_name as bigCategoryName,
+				middle_category_name as middleCategoryName,
+				small_category_name as smallCategoryName,
+				b_dong_code as dongCode,
+				b_dong_name as dongName,
+				floor_info as floorInfo,
+				road_address as roadAddress,
+				lng as longitude,
+				lat as latitude
+		from trade_hub where dong_name like concat('%',#{dongName},'%') limit 50
 	</select>
 	
 	<!-- findShopByCategory -->
-	<select id="findShopByCategory"	parameterType="string"	resultType="string">
-		select * from trade_hub where bigCategoryName = #{bigCategoryName}
+	<select id="findShopByCategory"	parameterType="string"	resultType="TradeHub">
+		select shop_name as shopName,
+				big_category_name as bigCategoryName,
+				middle_category_name as middleCategoryName,
+				small_category_name as smallCategoryName,
+				b_dong_code as dongCode,
+				b_dong_name as dongName,
+				floor_info as floorInfo,
+				road_address as roadAddress,
+				lng as longitude,
+				lat as latitude
+		from trade_hub where big_category_name = #{bigCategoryName} limit 50
 	</select>
 	
 	<!-- showShopCategorys -->
-	<select id="showShopCategorys"	resultType="string">
-		select * from trade_hub where buildYear = #{buildYear}
+	<select id="showShopCategorys"	resultType="String">
+		select distinct(big_category_name) from trade_hub
 	</select>
 	
 	<!-- showShopDongNames -->
-	<select id="showShopDongNames"	resultType="TradeHub">
-		select * from trade_hub where dealYear = #{dealYear}
+	<select id="showShopDongNames"	resultType="String">
+		select distinct(b_dong_name) from trade_hub
 	</select>
 	
 	
 	<!-- loadAllShops -->
 	<select id="loadAllShops" resultType="TradeHub" >
-		select * from trade_hub
+		select shop_name as shopName,
+				big_category_name as bigCategoryName,
+				middle_category_name as middleCategoryName,
+				small_category_name as smallCategoryName,
+				b_dong_code as dongCode,
+				b_dong_name as dongName,
+				floor_info as floorInfo,
+				road_address as roadAddress,
+				lng as longitude,
+				lat as latitude
+		from trade_hub limit 500
 	</select>
 	
 </mapper>
