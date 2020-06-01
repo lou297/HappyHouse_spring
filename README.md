@@ -28,7 +28,8 @@
 #### 3. 아파트별 실거래가 검색 결과 페이지 
 
 3-1. 실거래 메인페이지<br><br>
-![구현중](./readmeImg/.png)<br><br>
+![dealNow](./readmeImg/dealNow.png)<br><br>
+![dealNow2](./readmeImg/dealNow2.png)<br><br>
 
 3-2. 실거래 지역 검색<br><br>
 ![dealArea](./readmeImg/dealArea.png)<br><br>
