@@ -14,7 +14,7 @@
 		for(var i=0;i<group.length;i++){
 			if(group[i].checked==true){
 				var g = group[i].value;
-				location.href="${root}/house.do?act=main&group="+g+"&pg="+pg;
+				location.href="${root}/house/main?group="+g+"&pg="+pg;
 			}
 		}
 	}
@@ -32,14 +32,13 @@
 		var category = document.getElementById("category");
 		var c = category.options[category.selectedIndex].value;
 		
-		document.getElementById("loginform").action = "${root}/house.do?act=search_deals&category="+c+"&group="+g+"&pg="+pg;
+		document.getElementById("loginform").action = "${root}/house/search?category="+c+"&group="+g+"&pg="+pg;
 		document.getElementById("loginform").submit();
 	}
 	
 	$(document).ready(function(){
 
-		$.get("${root}/select.do"
-			,{command:"sido"}
+		$.get("${root}/select/sido"
 			,function(data, status){
 				$.each(data, function(index, vo) {
 					$("#sido").append("<option value='"+vo.sido_code+"'>"+vo.sido_name+"</option>");
@@ -50,11 +49,11 @@
 	});//ready
 	$(document).ready(function(){
 		$("#sido").change(function() {
-			$.get("${root}/select.do"
-					,{command:"gugun", sido:$("#sido").val()}
+			$.get("${root}/select/gugun"
+					,{sido:$("#sido").val()}
 					,function(data, status){
 						$("#gugun").empty();
-						$("#gugun").append('<option value="0">시</option>');
+						$("#gugun").append('<option value="0">구군</option>');
 						$.each(data, function(index, vo) {
 							$("#gugun").append("<option value='"+vo.gugun_code+"'>"+vo.gugun_name+"</option>");
 						});//each
@@ -63,11 +62,11 @@
 			);//get
 		});//change
 		$("#gugun").change(function() {
-			$.get("${root}/select.do"
-					,{command:"dong", gugun:$("#gugun").val()}
+			$.get("${root}/select/dong"
+					,{gugun:$("#gugun").val()}
 					,function(data, status){
 						$("#dong").empty();
-						$("#dong").append('<option value="0">구군</option>');
+						$("#dong").append('<option value="0">동</option>');
 						$.each(data, function(index, vo) {
 							$("#dong").append("<option value='"+vo.dong+"'>"+vo.dong+"</option>");
 						});//each
@@ -76,8 +75,8 @@
 			);//get
 		});//change
 		$("#dong").change(function() {
-			$.get("${root}/select.do"
-					,{command:"apt", dong:$("#dong").val()}
+			$.get("${root}/select/apt"
+					,{dong:$("#dong").val()}
 					,function(data, status){
 						$("#searchResult").empty();
 						$.each(data, function(index, vo) {
@@ -162,57 +161,12 @@
 				<c:forEach var="deal" items="${dealList}">
 				
 					<div class="justify-content-center border-bottom" align="left" style="margin-top:20px">
-						<a href="${root}/house.do?act=house_info&no=${deal.no}"  style="font-size:20px"><b>${deal.aptName }</b></a>
+						<a href="${root}/house/detail?no=${deal.no}"  style="font-size:20px"><b>${deal.aptName }</b></a>
 						<p>거래금액 : ${deal.dealAmount }만원</p>
 						<p>면적 : ${deal.area }</p>
 						<p>${deal.dealYear }.${deal.dealMonth }.${deal.dealDay }</p>
 					</div>
 	
-					<%--
-					<table class="table table-striped table-bordered">
-						<tbody align="center">
-							<tr class="table-info">
-								<th></th>
-								<th>Dong</th>
-								<th>aptName</th>
-							</tr>
-							<tr>
-	
-								<td>
-									<form method="post" action="${root}/house.do?act=house_info">
-										<button name="no" value="${deal.no }" type="submit">상세보기</button>
-									</form>
-								</td>
-								<td>${deal.dong }</td>
-								<td>${deal.aptName }</td>
-							</tr>
-	
-							<tr>
-								<th>건설년도</th>
-								<th>거래가</th>
-								<th>거래일자</th>
-							</tr>
-							<tr>
-								<td>${deal.buildYear }</td>
-								<td>${deal.dealAmount }</td>
-								<td>${deal.dealYear }.${deal.dealMonth }.${deal.dealDay }</td>
-							</tr>
-	
-							<tr>
-								<th>면적</th>
-								<th>층</th>
-								<th>지번</th>
-							</tr>
-							<tr>
-								<td>${deal.area }</td>
-								<td>${deal.floor }</td>
-								<td>${deal.jibun }</td>
-							</tr>
-						</tbody>
-	
-	
-					</table>
-					 --%>
 	
 				</c:forEach>
 			 </div>

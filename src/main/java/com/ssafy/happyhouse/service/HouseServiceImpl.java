@@ -41,7 +41,7 @@ public class HouseServiceImpl implements HouseService{
 			if(cnt==0) {
 				throw new HappyHouseException("주택 타입은 반드시 한개 이상을 선택해주셔야 합니다.");
 			}
-			return houseDao.searchAll(currentPage, sizePerPage, bean);
+			return houseDao.searchAll((currentPage - 1) * sizePerPage, sizePerPage, bean);
 		} catch (SQLException e) {
 			throw new HappyHouseException("주택 정보 조회 중 오류 발생");
 		}

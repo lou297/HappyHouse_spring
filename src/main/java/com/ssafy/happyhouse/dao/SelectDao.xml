@@ -12,12 +12,14 @@
 	
 	<!-- selectGugun -->
 	<select id="selectGugun" parameterType="string" resultType="SidoCode" >
-		select * from sidocode where sido = #{sido}
+		SELECT left(gugun_code,5) gugun_code, gugun_name
+		from guguncode
+		where left(gugun_code,2) = #{sido}
 	</select>
 	
 	<!-- selectDong -->
 	<select id="selectDong" parameterType="string" resultType="HouseInfo" >
-		select * from houseinfo where gugun = #{gugun}
+		select distinct dong, code from houseinfo where code = #{gugun}
 	</select>
 	
 	<!-- selectApt -->

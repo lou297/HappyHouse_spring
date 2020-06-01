@@ -9,10 +9,11 @@
 	<!-- searchAll -->
 	<select id="searchAll" resultType="HouseDeal" >
 		select * from HouseDeal
+		limit #{currentPage}, #{sizePerPage}
 	</select>
 	
 	<!-- search no -->
-	<select id="search"			parameterType="string"  	resultType="HouseDeal">
+	<select id="search"	  	resultType="HouseDeal">
 		select * from HouseDeal where no = #{no}
 	</select>
 	
@@ -50,16 +51,16 @@
 	
 	<!-- searchByDong -->
 	<select id="searchByDong"			parameterType="string"  	resultType="HouseDeal">
-		select * from HouseDeal where dong = #{dong}
+		select * from HouseDeal where dong like concat('%', #{dong},'%')
 	</select>
 	
 	<!-- searchByBuildYear -->
-	<select id="searchByBuildYear"			parameterType="string"  	resultType="HouseDeal">
+	<select id="searchByBuildYear"			parameterType="Integer"  	resultType="HouseDeal">
 		select * from HouseDeal where buildYear = #{buildYear}
 	</select>
 	
 	<!-- searchByDealYear -->
-	<select id="searchByDealYear"			parameterType="string"  	resultType="HouseDeal">
+	<select id="searchByDealYear"			parameterType="Integer"  	resultType="HouseDeal">
 		select * from HouseDeal where dealYear = #{dealYear}
 	</select>
 	
@@ -69,7 +70,7 @@
 	</select>
 	
 	<!-- getTotalCount -->
-	<select id="getTotalCount" resultType="int" >
+	<select id="getTotalCount" resultType="Integer" >
 		select count(*) as cnt from HouseDeal
 	</select>
 	
