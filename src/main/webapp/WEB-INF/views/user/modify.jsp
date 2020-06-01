@@ -26,7 +26,7 @@ function modifyMember() {
 			alert("전화번호를 입력해주세요");
 			return;
 		} else {
-		document.getElementById("modifyForm").action = "${root}/user.do";
+		document.getElementById("modifyForm").action = "${root}/user/modify";
 		document.getElementById("modifyForm").submit();
 	}
 }
@@ -42,7 +42,7 @@ function modifyMember() {
 
 					<div class="form-group">
 						<label for="id">아이디 :</label> 
-						<input type="text" class="form-control" id="id" name="id" value="${userinfo.id}" disabled>
+						<input type="text" class="form-control" id="id" name="id" value="${userinfo.id}" readonly>
 					</div>
 					<div class="form-group">
 						<label for="password">비밀번호 :</label> 
@@ -61,11 +61,11 @@ function modifyMember() {
 						<input type="text" class="form-control" id="phone" name="phone" value="${userinfo.phone}">
 					</div>
 
-					<button type="button" class="btn" onclick="javascript:modifyMember();">등록</button>
+					<button class="btn btn-primary" onclick="javascript:modifyMember();">등록</button>
 				</form>
 			</c:if>
 			<c:if test="${userinfo == null}">
-				null
+				<p>회원 정보 로드 실패</p>
 			</c:if>
 		</div>
 	</div>

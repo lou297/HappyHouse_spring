@@ -8,8 +8,8 @@
 
 	<!-- insert -->
 	<insert id="insert"			parameterType="HouseMember">
-		insert into housemember (	isbn
-						  , id
+		insert into housemember (
+						  	id
 						  , password
 						  , name
 					      , address
@@ -42,8 +42,7 @@
 	<!-- update -->
 	<update id="update"			parameterType="HouseMember">
 		update housemember set
-		 	   id = #{id}
-			  , password = #{password}
+			  	password = #{password}
 			  , name = #{name}
 			  , address = #{address}
 			  , phone = #{phone}
@@ -57,7 +56,7 @@
 		
 	<!-- findPw -->
 	<select id="findPw" parameterType="string" resultType="string">
-		select from housemember where id= #{id} and name= #{name}
+		select password from housemember where id= #{id} and name= #{name}
 	</select>
 	
 	
