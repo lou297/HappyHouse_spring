@@ -11,8 +11,12 @@ import com.ssafy.happyhouse.service.HouseService;
 @Controller
 public class HouseController {
 	
-	@Autowired
 	private HouseService houseService;
+	
+	@Autowired
+	public void setBookService(HouseService houseService) {
+		this.houseService = houseService;
+	}
 	
 	
 	@GetMapping("/main")
@@ -28,5 +32,10 @@ public class HouseController {
 	@GetMapping("/detail")
 	public String showHouseInfo() {
 		return "";
+	}
+	
+	@GetMapping("/aptdeal")
+	public String dealList() {
+		return "house/dealList";
 	}
 }
