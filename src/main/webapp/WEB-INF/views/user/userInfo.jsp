@@ -31,7 +31,7 @@
 			</c:if>
 		</div>
 		<button class="btn btn-primary" onClick = "location.href='${root}/index.jsp'">확인</button>
-		<button class="btn btn-primary" onClick = "location.href='${root}/user.do?act=modify_user_info'">수정</button>
+		<button class="btn btn-primary" onClick = "location.href='${root}/user/modifyPage'">수정</button>
 	</div>
 </body>
 </html>

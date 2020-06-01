@@ -23,7 +23,7 @@
 			alert("이름을 입력해주세요");
 			return;
 		} else {
-			document.getElementById("findForm").action = "${root}/user.do";
+			document.getElementById("findForm").action = "${root}/user/findPw";
 			document.getElementById("findForm").submit();
 		}
 	}
@@ -55,8 +55,7 @@
 	<c:if test="${user != null }">
 		<div align="center">
 			<div>비밀번호 : ${user}</div>
-			<button type="button" class="btn"
-				onclick="location.href='${root}/user.do?act=login'">로그인</button>
+			<a href="${root}/user/loginPage">로그인</a>
 		</div>
 	</c:if>
 </body>

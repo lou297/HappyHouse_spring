@@ -28,27 +28,44 @@ public class UserController {
 	public String register(HouseMember houseMember, Model model) {
 		
 		try {
-			houseMemberService.insert(houseMember.getId(), houseMember.getPassword(), houseMember.getName(), houseMember.getAddress(), houseMember.getPhone());
+			HouseMember hm = houseMemberService.insert(houseMember.getId(), houseMember.getPassword(), houseMember.getName(), houseMember.getAddress(), houseMember.getPhone());
+			
+			System.out.println("hm : " + hm.getName());
 		} catch (Exception e) {
 			model.addAttribute("msg", "회원 가입 중 문제가 발생했습니다.");
+			return "redirect:/error.jsp";
 		}
 		
 		return "redirect:/index.jsp";
 	}
 	
 	@GetMapping("/modifyPage")
-	public String modifyPage() {
+	public String modifyPage(HttpSession session, Model model) {
 		
+		HouseMember housemember = (HouseMember) session.getAttribute("userinfo");
+		model.addAttribute("user", housemember);
 		return "/user/modify";
 	}
 	
 	@PostMapping("/modify")
-	public String modify() {
+	public String modify(HouseMember houseMember, HttpSession session) {
+		
+		int n = houseMemberService.update(houseMember.getId(), houseMember.getPassword(), houseMember.getName(), houseMember.getAddress(), houseMember.getPhone());
+		
+		if(n > 0) {
+			session.setAttribute("userinfo", houseMember);
+		}
+		
 		return "/user/userInfo";
 	}
 	
 	@GetMapping("/delete")
-	public String delete() {
+	public String delete(HttpSession session) {
+		
+		HouseMember housemember = (HouseMember) session.getAttribute("userinfo");
+		houseMemberService.delete(housemember.getId());
+		session.removeAttribute("userinfo");
+		
 		return "redirect:/index.jsp";
 	}
 	
@@ -99,8 +116,11 @@ public class UserController {
 	}
 	
 	@PostMapping("/findPw")
-	public String findPw() {
+	public String findPw(String id, String name, Model model) {
 		
+		String password = houseMemberService.findPw(id, name);
+		
+		model.addAttribute("user",password);
 		
 		return "/user/findPw";
 		
