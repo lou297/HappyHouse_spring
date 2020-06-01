@@ -1,47 +1,46 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
-
 <!DOCTYPE html>
-<html>
-
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCjA0YjA7wIVIwwsqyx8kj3qTbbUuA3ATg&sensor=true" ></script>
-<script> 
-
-function initialize() { 
-var myLatlng = new google.maps.LatLng(37.5013068, 127.0396597); // 좌표값
-	var mapOptions = {
-	      zoom: 16, // 지도 확대레벨 조정
-	      center: myLatlng, 
-	      mapTypeId: google.maps.MapTypeId.ROADMAP 
-	} 
-	var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions); 
-	var marker = new google.maps.Marker({ 
-		position: myLatlng, 
-		map: map, 
-		title: "역삼 멀티캠퍼스" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
-	}); 
-} 
+<html>	
+<script type="text/javascript"
+	src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script type="text/javascript"
+	src="http://maps.google.com/maps/api/js?key=AIzaSyCjA0YjA7wIVIwwsqyx8kj3qTbbUuA3ATg&sensor=true"></script>
+<script>
+	function initialize() {
+		var myLatlng = new google.maps.LatLng(37.5013068, 127.0396597); // 좌표값
+		var mapOptions = {
+			zoom : 16, // 지도 확대레벨 조정
+			center : myLatlng,
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		}
+		var map = new google.maps.Map(document.getElementById('map_canvas'),
+				mapOptions);
+		var marker = new google.maps.Marker({
+			position : myLatlng,
+			map : map,
+			title : "역삼 멀티캠퍼스" // 마커에 마우스를 올렸을때 간략하게 표기될 설명글
+		});
+	}
 	window.onload = initialize;
 </script>
 
 <%@ include file="WEB-INF/views/header/header.jsp"%>
 <%@ include file="WEB-INF/views/menu/nav.jsp"%>
 <style>
-
 .embed-container {
 	position: relative;
 	padding-bottom: 56.25%;
-	height: 0; 
-	overflow: hidden; 
-	max-width: 70%; 
+	height: 0;
+	overflow: hidden;
+	max-width: 70%;
 }
 
-.embed-container iframe, .embed-container object, .embed-container embed {
-	position: absolute; 
-	top: 0; 
+.embed-container iframe, .embed-container object, .embed-container embed
+	{
+	position: absolute;
+	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
@@ -50,7 +49,7 @@ var myLatlng = new google.maps.LatLng(37.5013068, 127.0396597); // 좌표값
 div.top {
 	width: 100%;
 	height: 10%;
-	background-image: URL(${root}/img/house.jpg);
+	background-image: URL(img/house.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
@@ -86,13 +85,15 @@ img.mainMap {
 				<hr width="50%" size="3">
 				<p>행복한 우리집</p>
 			</div>
-			<div id="map_canvas"  class="embed-container"></div>
+			<div id="map_canvas" class="embed-container"></div>
 		</div>
 		<div class="container" style="padding-top: 5%;">
 			<div class="row">
 				<div class="col-md-4">
-					<a href="https://www.ssafy.com/ksp/jsp/swp/swpMain.jsp"><img
-						alt="이미지를 불러올 수 없습니다." class="ssafy" src="${root}/img/ssafy4.jpg "></a>
+					<a
+						href="https://img.kr.news.samsung.com/kr/wp-content/uploads/2020/04/200429ssafy4th1.jpg"><img
+						alt="이미지를 불러올 수 없습니다." class="ssafy"
+						src="https://img.kr.news.samsung.com/kr/wp-content/uploads/2020/04/200429ssafy4th1.jpg"></a>
 				</div>
 				<div class="col-md-4">
 					<h6>지혜롭게 내집 마련하기</h6>
