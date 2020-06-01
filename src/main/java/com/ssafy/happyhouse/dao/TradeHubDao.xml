@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.ssafy.happyhouse.dao.TradeHubDao">
+
+	
+	
+	<!-- findShopByDongName -->
+	<select id="findShopByDongName"			parameterType="string"  	resultType="TradeHub">
+		select * from trade_hub where dongName like concat('%',#{dongName},'%') limit 50
+	</select>
+	
+	<!-- findShopByCategory -->
+	<select id="findShopByCategory"	parameterType="string"	resultType="string">
+		select * from trade_hub where bigCategoryName = #{bigCategoryName}
+	</select>
+	
+	<!-- showShopCategorys -->
+	<select id="showShopCategorys"	resultType="string">
+		select * from trade_hub where buildYear = #{buildYear}
+	</select>
+	
+	<!-- showShopDongNames -->
+	<select id="showShopDongNames"	resultType="TradeHub">
+		select * from trade_hub where dealYear = #{dealYear}
+	</select>
+	
+	
+	<!-- loadAllShops -->
+	<select id="loadAllShops" resultType="TradeHub" >
+		select * from trade_hub
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
