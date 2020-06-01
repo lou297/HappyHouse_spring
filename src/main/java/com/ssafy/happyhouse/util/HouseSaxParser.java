@@ -26,9 +26,11 @@ public class HouseSaxParser {
  	 * HouseSAXHandler를 이용 파싱한 아파트 거래 내역을 추출한다. 
  	 */
 	private void loadData() {
+
 		SAXParserFactory factory = SAXParserFactory.newInstance();
-//		System.out.println(getClass().getResource("/../../res/").getPath());
-		String infoFilePath = getClass().getResource("/../../").getPath() + "/res/AptInfo.xml";
+		
+		String infoFilePath = getClass().getResource("/").getPath() + "static/resources/res/AptInfo.xml";
+		System.out.println(infoFilePath);
 		try{
 			SAXParser parser = factory.newSAXParser();
 			HouseSAXHandler handler = new HouseSAXHandler();

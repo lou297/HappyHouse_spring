@@ -128,7 +128,7 @@ public class HouseController {
 			model.addAttribute("deal", deal);
 			
 		} catch(Exception e) {
-			model.addAttribute("msg", "상세 정보 로드 실패");
+			model.addAttribute("msg", e.toString());
 			return "/error.jsp";
 		}
 		

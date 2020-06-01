@@ -49,7 +49,7 @@
 	</table>
  --%>
 	<div class="container" style="margin-top: 100px">
-		<img src="${root}/img/${deal.img}"  class="img-thumbnail" style="width: 200px; height : 200px; float:left">
+		<img src="${root}/resources/img/${deal.img}"  class="img-thumbnail" style="width: 200px; height : 200px; float:left">
 		<div style="float:left; margin-left:50px; margin-top:20px" class="col-8">
 			<h5 class="text-primary"><b>${deal.dong } ${deal.aptName }</b></h5>
 			<table>

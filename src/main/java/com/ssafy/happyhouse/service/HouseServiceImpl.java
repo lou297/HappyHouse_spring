@@ -2,6 +2,7 @@ package com.ssafy.happyhouse.service;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,17 +13,25 @@ import com.ssafy.happyhouse.dto.HouseDeal;
 import com.ssafy.happyhouse.dto.HouseInfo;
 import com.ssafy.happyhouse.dto.HousePageBean;
 import com.ssafy.happyhouse.exception.HappyHouseException;
+import com.ssafy.happyhouse.util.HouseSaxParser;
 import com.ssafy.happyhouse.util.PageNavigation;
 
 
 @Service
 public class HouseServiceImpl implements HouseService{
+	private Map<String, HouseInfo> houseInfo;
+
 	
 	@Autowired
 	private HouseDao houseDao;
 	@Autowired
 	private HouseInfoDao infoDao;
+
 	
+	public void init() {
+		HouseSaxParser hsp = new HouseSaxParser();
+		houseInfo = hsp.getHouseInfo();
+	}
 	/**
 	 * 검색 조건(key) 검색 단어(word)에 해당하는 아파트 거래 정보(HouseInfo)를  검색해서 반환.  
 	 * @param bean  검색 조건과 검색 단어가 있는 객체
@@ -59,6 +68,19 @@ public class HouseServiceImpl implements HouseService{
 			if(deal == null) {
 				throw new HappyHouseException(String.format("거래번호 %d번에 해당하는 주택거래 정보가 존재하지 않습니다.", no));
 			}
+			
+			init();
+			
+			String key = deal.getDong().trim() + deal.getAptName().trim();
+			
+			HouseInfo info = houseInfo.get(key);
+			
+			if (info != null) {
+				deal.setImg(info.getImg());
+			} else {
+				deal.setImg("다세대주택.jpg");
+			}
+			
 			return deal;
 		} catch (SQLException e) {
 			throw new HappyHouseException("주택 정보 조회 중 오류 발생");
