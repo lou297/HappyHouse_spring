@@ -33,9 +33,4 @@ public class HouseController {
 	public String showHouseInfo() {
 		return "";
 	}
-	
-	@GetMapping("/aptdeal")
-	public String dealList() {
-		return "house/dealList";
-	}
 }
