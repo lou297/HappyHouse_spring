@@ -2,20 +2,17 @@ package com.ssafy.happyhouse.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ssafy.happyhouse.dao.TradeHubDao;
 import com.ssafy.happyhouse.dto.TradeHub;
 
+//@Service
 public class TradeHubServiceImpl implements TradeHubService{
 	
+//	@Autowired
 	TradeHubDao tradeHubDao;
-	
-	
-
-	public TradeHubServiceImpl() {
-//		tradeHubDao = new TradeHubDaoImpl();
-	}
-
-
 
 	@Override
 	public List<TradeHub> findShopByDongName(String dongName) throws Exception {

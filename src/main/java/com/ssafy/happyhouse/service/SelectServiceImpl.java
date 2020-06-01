@@ -2,16 +2,20 @@ package com.ssafy.happyhouse.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;
+
 import com.ssafy.happyhouse.dao.SelectDao;
 import com.ssafy.happyhouse.dto.HouseInfo;
 import com.ssafy.happyhouse.dto.SidoCode;
 
+//@Service
 public class SelectServiceImpl implements SelectService{
+	
+//	@Autowired
 	private SelectDao dao;
 
-	public SelectServiceImpl() {
-//		dao =  new SelectDaoImpl();
-	}
 
 	@Override
 	public ArrayList<SidoCode> selectSido() throws Exception {
