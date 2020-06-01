@@ -23,7 +23,7 @@ function login() {
 			alert("비밀번호를 입력해주세요");
 			return;
 		} else {
-		document.getElementById("loginForm").action = "${root}/user.do";
+		document.getElementById("loginForm").action = "${root}/user/login";
 		document.getElementById("loginForm").submit();
 	}
 }
@@ -45,8 +45,8 @@ function login() {
 			</div>
 			
 			<button type="button" class="btn btn-primary" onclick="javascript:login();">로그인</button>
-			<button type="button" class="btn btn-primary" onclick="location.href='${root}/user/join.jsp'">회원가입</button>
-			<button type="button" class="btn btn-primary" onclick="location.href='${root}/user/findPw.jsp'">비밀번호 찾기</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='${root}/user/registPage'">회원가입</button>
+			<button type="button" class="btn btn-primary" onclick="location.href='${root}/user/findPwPage'">비밀번호 찾기</button>
 		</form>
 	
 	</div>

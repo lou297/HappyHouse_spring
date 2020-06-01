@@ -38,24 +38,24 @@
 					<c:choose>
 						<c:when test="${userinfo eq null }">
 							<li class="nav-item"><a class="nav-link"
-								href="${root}/user.do?act=login">로그인</a></li>
+								href="${root}/user/loginPage">로그인</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="${root}/user.do?act=regist">회원 가입</a></li>
+								href="${root}/user/registPage">회원 가입</a></li>
 						</c:when>
 
 						<c:otherwise>
 
 							<li class="nav-item"><a class="nav-link"
-								href="${root}/user.do?act=find_user_info">회원 정보 조회</a></li>
+								href="${root}/user/find">회원 정보 조회</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="${root}/user.do?act=modify_user_info">회원 정보 수정</a></li>
+								href="${root}/user/modifyPage">회원 정보 수정</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="${root}/user.do?act=remove_user_info">회원 정보 삭제</a></li>
+								href="${root}/user/delete">회원 정보 삭제</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="${root}/user.do?act=logout">로그아웃</a></li>
+								href="${root}/user/logoutPage">로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>

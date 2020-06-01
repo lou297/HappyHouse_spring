@@ -32,7 +32,7 @@ function registerMember() {
 			alert("전화번호를 입력해주세요");
 			return;
 		} else {
-		document.getElementById("registerForm").action = "${root}/user.do";
+		document.getElementById("registerForm").action = "${root}/user/register";
 		document.getElementById("registerForm").submit();
 	}
 }

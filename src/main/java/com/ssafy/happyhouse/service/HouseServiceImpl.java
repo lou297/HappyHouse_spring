@@ -3,6 +3,9 @@ package com.ssafy.happyhouse.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.ssafy.happyhouse.dao.HouseDao;
 import com.ssafy.happyhouse.dao.HouseInfoDao;
 import com.ssafy.happyhouse.dto.HouseDeal;
@@ -11,14 +14,15 @@ import com.ssafy.happyhouse.dto.HousePageBean;
 import com.ssafy.happyhouse.exception.HappyHouseException;
 import com.ssafy.happyhouse.util.PageNavigation;
 
+
+//@Service
 public class HouseServiceImpl implements HouseService{
-	private HouseDao dao;
+	
+//	@Autowired
+	private HouseDao houseDao;
+//	@Autowired
 	private HouseInfoDao infoDao;
 	
-	public HouseServiceImpl() {
-//		 dao =new HouseDaoImpl();
-//		 infoDao = new HouseInfoDaoImpl();
-	}
 	/**
 	 * 검색 조건(key) 검색 단어(word)에 해당하는 아파트 거래 정보(HouseInfo)를  검색해서 반환.  
 	 * @param bean  검색 조건과 검색 단어가 있는 객체
@@ -37,7 +41,7 @@ public class HouseServiceImpl implements HouseService{
 			if(cnt==0) {
 				throw new HappyHouseException("주택 타입은 반드시 한개 이상을 선택해주셔야 합니다.");
 			}
-			return dao.searchAll(currentPage, sizePerPage, bean);
+			return houseDao.searchAll(currentPage, sizePerPage, bean);
 		} catch (SQLException e) {
 			throw new HappyHouseException("주택 정보 조회 중 오류 발생");
 		}
@@ -50,7 +54,7 @@ public class HouseServiceImpl implements HouseService{
 	 */
 	public HouseDeal search(int no) {
 		try {
-			HouseDeal deal = dao.search(no);
+			HouseDeal deal = houseDao.search(no);
 			
 			if(deal == null) {
 				throw new HappyHouseException(String.format("거래번호 %d번에 해당하는 주택거래 정보가 존재하지 않습니다.", no));
@@ -84,7 +88,7 @@ public class HouseServiceImpl implements HouseService{
 	public HouseDeal addHouseDeal(String dong, String aptName, int code, String dealAmount, int buildYear, int dealYear,
 			int dealMonth, int dealDay, double area, int floor, String jibun, String type, String rentMoney) {
 		try {
-			int n = dao.addHouseDeal(dong, aptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, rentMoney);
+			int n = houseDao.addHouseDeal(dong, aptName, code, dealAmount, buildYear, dealYear, dealMonth, dealDay, area, floor, jibun, type, rentMoney);
 			if(n ==1) {
 				HouseDeal hd = new HouseDeal();
 				hd.setDong(dong);
@@ -113,7 +117,7 @@ public class HouseServiceImpl implements HouseService{
 	@Override
 	public List<HouseDeal> searchByDong(String dong) {
 		try {
-			return dao.searchByDong(dong);
+			return houseDao.searchByDong(dong);
 		} catch(SQLException e) {
 			throw new HappyHouseException("동으로 검색 중 오류 발생");
 		}
@@ -122,7 +126,7 @@ public class HouseServiceImpl implements HouseService{
 	@Override
 	public List<HouseDeal> searchByBuildYear(int buildYear) {
 		try {
-			return dao.searchByBuildYear(buildYear);
+			return houseDao.searchByBuildYear(buildYear);
 		} catch(SQLException e) {
 			throw new HappyHouseException("건설연도로 검색 중 오류 발생");
 		}
@@ -131,7 +135,7 @@ public class HouseServiceImpl implements HouseService{
 	@Override
 	public List<HouseDeal> searchByDealYear(int dealYear) {
 		try {
-			return dao.searchByDealYear(dealYear);
+			return houseDao.searchByDealYear(dealYear);
 		} catch(SQLException e) {
 			throw new HappyHouseException("검색연도로 검색 중 오류 발생");
 		}
@@ -140,7 +144,7 @@ public class HouseServiceImpl implements HouseService{
 	@Override
 	public List<HouseDeal> searchByAreaScope(Integer min, Integer max) {
 		try {
-			return dao.searchByAreaScope(min, max);
+			return houseDao.searchByAreaScope(min, max);
 		} catch(SQLException e) {
 			throw new HappyHouseException("주택 정보 조회 중 오류 발생");
 		}
@@ -155,7 +159,7 @@ public class HouseServiceImpl implements HouseService{
 		int naviSize = 10; //밑에 한번에 눌러서 갈 수 있는 페이지개수
 		pageNavigation.setCurrentPage(currentPage);
 		pageNavigation.setNaviSize(naviSize);
-		int totalCount = dao.getTotalCount(bean); //총 게시글 수
+		int totalCount = houseDao.getTotalCount(bean); //총 게시글 수
 		pageNavigation.setTotalCount(totalCount);
 		int totalPageCount = (totalCount-1)/sizePerPage+1; //전체 페이지 수 계산
 		pageNavigation.setTotalPageCount(totalPageCount);
