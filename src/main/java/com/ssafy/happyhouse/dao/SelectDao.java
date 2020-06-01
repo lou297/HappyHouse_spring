@@ -2,9 +2,14 @@ package com.ssafy.happyhouse.dao;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
+
 import com.ssafy.happyhouse.dto.HouseInfo;
 import com.ssafy.happyhouse.dto.SidoCode;
 
+@Mapper
+@Repository
 public interface SelectDao {
 	ArrayList<SidoCode> selectSido() throws Exception;
 
