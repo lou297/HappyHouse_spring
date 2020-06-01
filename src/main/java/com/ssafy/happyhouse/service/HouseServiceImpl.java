@@ -19,7 +19,7 @@ import com.ssafy.happyhouse.util.PageNavigation;
 
 @Service
 public class HouseServiceImpl implements HouseService{
-	private Map<String, HouseInfo> houseInfo;
+	private static Map<String, HouseInfo> houseInfo;
 
 	
 	@Autowired
@@ -29,8 +29,10 @@ public class HouseServiceImpl implements HouseService{
 
 	
 	public void init() {
-		HouseSaxParser hsp = new HouseSaxParser();
-		houseInfo = hsp.getHouseInfo();
+		if(houseInfo == null) {
+			HouseSaxParser hsp = new HouseSaxParser();
+			houseInfo = hsp.getHouseInfo();
+		}
 	}
 	/**
 	 * 검색 조건(key) 검색 단어(word)에 해당하는 아파트 거래 정보(HouseInfo)를  검색해서 반환.  
