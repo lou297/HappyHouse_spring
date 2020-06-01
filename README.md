@@ -10,13 +10,17 @@
 4)  회원정보 등록, 수정, 삭제, 검색 페이지 (Spring & MyBatis 기반) </br>
 5)  로그인/ 로그아웃 페이지 (Spring & MyBatis 기반)
 
+## Class_Diagram
+![ClassDiagram](./readmeImg/ClassDiagram.gif)
+
 ## 참고 화면
 
 ## 1. 메인 페이지
-![logoutMain](./readmeImg/logoutMain.png)
+![main](./readmeImg/main.JPG)
 
 ## 2. 동별 실거래가 검색 결과 페이지 
 2.1 조회<br><br>
+![deal](./readmeImg/deal.png)<br><br>
 
 #### 3. 아파트별 실거래가 검색 결과 페이지 
 
@@ -24,19 +28,22 @@
 ![login](./readmeImg/login.png)<br><br>
 
 3-2. 실거래 지역 검색<br><br>
-![loginMain](./readmeImg/loginMain.png)<br><br>
+![dealArea](./readmeImg/dealArea.png)<br><br>
 
 3-3. 실거래 상세 검색<br><br>
-![logoutMain](./readmeImg/logoutMain.png)<br><br>
+![detail](./readmeImg/detail.png)<br><br>
+
+3-4. 상관 정보
+![dealBusiness](./readmeImg/dealBusiness.png)<br><br>
+![dealBusinessArea](./readmeImg/dealBusinessArea.png)<br><br>
 
 #### 4. 회원정보 등록, 수정, 삭제, 검색 페이지 
 
 4.1 회원 가입<br><br>
 ![regist](./readmeImg/regist.JPG)<br><br>
-![regist2](./readmeImg/regist2.JPG)<br><br>
 
 4.2 회원 정보 조회<br><br>
-![userinfo](./readmeImg/userinfo.JPG)<br><br>
+![regist2](./readmeImg/regist2.JPG)<br><br>
 
 4.3 회원 정보 수정 <br><br>
 ![userupdate](./readmeImg/userupdate.JPG)<br><br>
@@ -46,4 +53,5 @@
 ![delete](./readmeImg/delete.JPG)<br><br>
 
 #### 5. 로그인/ 로그아웃 페이지 
-![loginForm](./readmeImg/loginForm.JPG)<br><br>
+![login](./readmeImg/login.JPG)<br><br>
+![main](./readmeImg/main.JPG)
