@@ -22,8 +22,8 @@
 	</insert>
 
 	<!-- login -->
-	<select id="login" resultType="string" parameterType="HouseMember">
-		select id
+	<select id="login" resultType="HouseMember">
+		select *
 		from   housemember
 		where  id = #{id}
 		and	   password = #{password}

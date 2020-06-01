@@ -55,7 +55,7 @@
 								href="${root}/user/delete">회원 정보 삭제</a></li>
 
 							<li class="nav-item"><a class="nav-link"
-								href="${root}/user/logoutPage">로그아웃</a></li>
+								href="${root}/user/logout">로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>

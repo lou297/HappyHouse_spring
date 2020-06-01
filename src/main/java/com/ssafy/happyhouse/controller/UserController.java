@@ -4,10 +4,12 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.ssafy.happyhouse.dto.HouseMember;
 import com.ssafy.happyhouse.service.HouseMemberService;
 
 @RequestMapping("/user")
@@ -19,12 +21,17 @@ public class UserController {
 	
 	@GetMapping("/registPage")
 	public String registerPage() {
-		return "redirect:/WEB-INF/views/user/join.jsp";
+		return "/user/join";
 	}
 	
 	@PostMapping("/register")
-	public String register() {
+	public String register(HouseMember houseMember, Model model) {
 		
+		try {
+			houseMemberService.insert(houseMember.getId(), houseMember.getPassword(), houseMember.getName(), houseMember.getAddress(), houseMember.getPhone());
+		} catch (Exception e) {
+			model.addAttribute("msg", "회원 가입 중 문제가 발생했습니다.");
+		}
 		
 		return "redirect:/index.jsp";
 	}
@@ -58,7 +65,23 @@ public class UserController {
 	}
 	
 	@PostMapping("/login")
-	public String login() {
+	public String login(String id, String password, HttpSession session, Model model) {
+		System.out.println("id, pw : " + id +", " +password );
+		try {
+			HouseMember houseMember = houseMemberService.login(id, password);
+			if (houseMember != null) {
+				session.setAttribute("userinfo", houseMember);
+				session.setMaxInactiveInterval(60 * 60);
+			} else {
+				model.addAttribute("msg", "아이디 또는 비밀번호를 확인해주세요.");
+				return "redirect:/error.jsp";
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			model.addAttribute("msg", "로그인 중 문제가 발생핬습니다.");
+			return "redirect:/error.jsp";
+		}
+		
 		return "redirect:/index.jsp";
 	}
 	
@@ -72,7 +95,7 @@ public class UserController {
 	public String findPwPage() {
 		
 		
-		return "redirect:/WEB-INF/views/user/findPw.jsp";
+		return "/user/findPw";
 	}
 	
 	@PostMapping("/findPw")
