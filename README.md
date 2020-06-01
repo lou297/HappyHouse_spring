@@ -1,4 +1,4 @@
-## 목표 :
+## 목표
 - 웹 아키텍처를 이해하고 활용할 수 있다.
 - Spring Framework와 myBatis Framework를  활용하여 웹 서버를 구축할 수 있다.
 - MVC 아키텍처를 활용하여 확장성과 유지보수성 좋은 웹 서버를 구축할 수 있다. 
@@ -8,7 +8,10 @@
 2)  동별 실거래가 검색 결과 페이지 (Spring & MyBatis 기반) </br>
 3)  아파트별 실거래가 검색 결과 페이지 (Spring & MyBatis 기반) </br>
 4)  회원정보 등록, 수정, 삭제, 검색 페이지 (Spring & MyBatis 기반) </br>
-5)  로그인/ 로그아웃 페이지 (Spring & MyBatis 기반)
+5)  로그인/ 로그아웃 페이지 (Spring & MyBatis 기반)</br>
+
+#### 추가 기능
+1) 메인화면 Google API 활용</br></br>
 
 ## Class_Diagram
 ![ClassDiagram](./readmeImg/ClassDiagram.gif)
@@ -25,7 +28,7 @@
 #### 3. 아파트별 실거래가 검색 결과 페이지 
 
 3-1. 실거래 메인페이지<br><br>
-![login](./readmeImg/login.png)<br><br>
+![구현중](./readmeImg/.png)<br><br>
 
 3-2. 실거래 지역 검색<br><br>
 ![dealArea](./readmeImg/dealArea.png)<br><br>
@@ -53,5 +56,9 @@
 ![delete](./readmeImg/delete.JPG)<br><br>
 
 #### 5. 로그인/ 로그아웃 페이지 
+5.1 로그인<br><br>
 ![login](./readmeImg/login.JPG)<br><br>
+![login_after](./readmeImg/login_after.JPG)<br><br>
+
+5.2 로그아웃 페이지<br><br>
 ![main](./readmeImg/main.JPG)
