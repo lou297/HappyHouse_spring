@@ -7,8 +7,17 @@
 <mapper namespace="com.ssafy.happyhouse.dao.HouseDao">
 
 	<!-- searchAll -->
-	<select id="searchAll" resultType="HouseDeal" >
+	<select id="searchAll" resultType="HouseDeal" parameterType="map">
 		select * from HouseDeal
+		<where>
+			<if test="dong != null">
+				dong like concat('%',#{dong},'%')
+			</if>
+			<if test="aptname != null">
+				aptname like concat('%',#{aptname},'%')
+			</if>
+		</where>
+		
 		limit #{currentPage}, #{sizePerPage}
 	</select>
 	

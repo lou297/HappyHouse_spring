@@ -124,7 +124,7 @@
 			
 
 			<div style="margin-bottom: 50px">
-				<form id="loginform" method="post" action="">
+				<form id="loginform" method="get" action="">
 					<input type="hidden" name="pg" id="pg" value=""> <input
 						type="radio" id="all" value="all" name="group"
 						onclick="location.href='javascript:pageMove(1);'"

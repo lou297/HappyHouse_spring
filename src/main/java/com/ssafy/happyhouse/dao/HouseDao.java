@@ -1,6 +1,7 @@
 package com.ssafy.happyhouse.dao;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -26,7 +27,8 @@ public interface HouseDao {
 	 * @return 조회한 식품 목록
 	 */
 
-	public List<HouseDeal> searchAll(int currentPage, int sizePerPage, HousePageBean bean) throws SQLException;
+//	public List<HouseDeal> searchAll(int currentPage, int sizePerPage, HousePageBean bean) throws SQLException;
+	public List<HouseDeal> searchAll(HashMap<String,Object> map) throws SQLException;
 
 	/**
 	 * 아파트 식별 번호에 해당하는 아파트 거래 정보를 검색해서 반환.

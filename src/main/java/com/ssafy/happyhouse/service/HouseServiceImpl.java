@@ -1,6 +1,7 @@
 package com.ssafy.happyhouse.service;
 
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +53,14 @@ public class HouseServiceImpl implements HouseService{
 			if(cnt==0) {
 				throw new HappyHouseException("주택 타입은 반드시 한개 이상을 선택해주셔야 합니다.");
 			}
-			return houseDao.searchAll((currentPage - 1) * sizePerPage, sizePerPage, bean);
+			
+			HashMap<String,Object> map = new HashMap<String, Object>();
+			map.put("aptname", bean.getAptname());
+			map.put("dong", bean.getDong());
+			map.put("currentPage", (currentPage - 1) * sizePerPage);
+			map.put("sizePerPage", sizePerPage);
+//			return houseDao.searchAll((currentPage - 1) * sizePerPage, sizePerPage, bean);
+			return houseDao.searchAll(map);
 		} catch (SQLException e) {
 			throw new HappyHouseException("주택 정보 조회 중 오류 발생");
 		}

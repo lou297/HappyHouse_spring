@@ -1,5 +1,6 @@
 package com.ssafy.happyhouse.controller;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,9 +68,9 @@ public class HouseController {
 	@GetMapping("/search")
 	public String search(String category, String group, int pg, String spp, String search, Model model) {
 		HousePageBean bean = new HousePageBean();
-		
+		HashMap<String,Object> map = new HashMap<String,Object>();
+
 		int sizePerPage =spp == null?10:Integer.parseInt(spp);
-		
 		switch(group) {
 		case "all" :
 			boolean[] allB = {true, true, true, true};
@@ -86,23 +87,22 @@ public class HouseController {
 		}
 		
 		model.addAttribute("group", group);
-		
 		switch(category) {
 			case "apt" :
 				bean.setAptname(search);
-				
+				map.put("aptname", search);
 				model.addAttribute("apt", category);
 				model.addAttribute("search", search);
 				break;
 				
 			case "dong" :
 				bean.setDong(search);
-				
+				map.put("dong", search);
 				model.addAttribute("dong", category);
 				model.addAttribute("search", search);
 				break;
 		}
-		
+
 		try {
 			List<HouseDeal> dealList =houseService.searchAll(pg, sizePerPage, bean);
 			PageNavigation pageNavigation = houseService.makePageNavigation(pg, sizePerPage, bean);
@@ -110,7 +110,7 @@ public class HouseController {
 			model.addAttribute("navigation", pageNavigation);
 			
 		} catch(Exception e) {
-			model.addAttribute("msg", "거래 정보 로드 실패");
+			model.addAttribute("msg", e.toString());
 			return "/error.jsp";
 		}
 		
