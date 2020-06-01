@@ -10,10 +10,10 @@ import com.ssafy.happyhouse.dao.SelectDao;
 import com.ssafy.happyhouse.dto.HouseInfo;
 import com.ssafy.happyhouse.dto.SidoCode;
 
-//@Service
+@Service
 public class SelectServiceImpl implements SelectService{
 	
-//	@Autowired
+	@Autowired
 	private SelectDao dao;
 
 

@@ -11,21 +11,21 @@ import com.ssafy.happyhouse.service.HouseService;
 @Controller
 public class HouseController {
 	
-//	@Autowired
+	@Autowired
 	private HouseService houseService;
 	
 	
-	@GetMapping("/main.do")
+	@GetMapping("/main")
 	public String showMainView(String group) {
 		return "house/dealList";
 	}
 	
-	@GetMapping("/search.do")
+	@GetMapping("/search")
 	public String searchDeals() {
 		return "house/dealList";
 	}
 	
-	@GetMapping("/detail.do")
+	@GetMapping("/detail")
 	public String showHouseInfo() {
 		return "";
 	}

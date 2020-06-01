@@ -15,12 +15,12 @@ import com.ssafy.happyhouse.exception.HappyHouseException;
 import com.ssafy.happyhouse.util.PageNavigation;
 
 
-//@Service
+@Service
 public class HouseServiceImpl implements HouseService{
 	
-//	@Autowired
+	@Autowired
 	private HouseDao houseDao;
-//	@Autowired
+	@Autowired
 	private HouseInfoDao infoDao;
 	
 	/**

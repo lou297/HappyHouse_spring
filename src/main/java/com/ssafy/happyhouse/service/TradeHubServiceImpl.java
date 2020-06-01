@@ -8,10 +8,10 @@ import org.springframework.stereotype.Service;
 import com.ssafy.happyhouse.dao.TradeHubDao;
 import com.ssafy.happyhouse.dto.TradeHub;
 
-//@Service
+@Service
 public class TradeHubServiceImpl implements TradeHubService{
 	
-//	@Autowired
+	@Autowired
 	TradeHubDao tradeHubDao;
 
 	@Override

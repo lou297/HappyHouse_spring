@@ -10,10 +10,10 @@ import com.ssafy.happyhouse.dao.HouseMemberDao;
 import com.ssafy.happyhouse.dto.HouseMember;
 
 
-//@Service
+@Service
 public class HouseMemberServiceImpl implements HouseMemberService {
 	
-//	@Autowired
+	@Autowired
 	private HouseMemberDao dao;
 	
 

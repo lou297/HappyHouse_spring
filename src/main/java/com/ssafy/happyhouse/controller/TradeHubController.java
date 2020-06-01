@@ -11,17 +11,17 @@ import com.ssafy.happyhouse.service.TradeHubService;
 @Controller
 public class TradeHubController {
 	
-//	@Autowired
+	@Autowired
 	private TradeHubService tradeHubService;
 	
-	@GetMapping("/category.do")
+	@GetMapping("/category")
 	public String findShopByCategory() {
 		
 		
 		return "tradehub/tradeHubList";
 	}
 	
-	@GetMapping("/dong.do")
+	@GetMapping("/dong")
 	public String findShopByDongName() {
 		
 		return "tradehub/tradeHubList";

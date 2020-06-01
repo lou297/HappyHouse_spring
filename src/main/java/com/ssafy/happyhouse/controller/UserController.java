@@ -2,6 +2,7 @@ package com.ssafy.happyhouse.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,7 +14,7 @@ import com.ssafy.happyhouse.service.HouseMemberService;
 @Controller
 public class UserController {
 	
-//	@Autowired
+	@Autowired
 	private HouseMemberService houseMemberService;
 	
 	@GetMapping("/registPage")
